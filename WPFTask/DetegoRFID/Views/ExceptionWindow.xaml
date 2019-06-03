@@ -1,0 +1,51 @@
+﻿<Window x:Class="DetegoRFID.Views.ExceptionWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:conv="clr-namespace:DetegoRFID.Converters"
+        xmlns:local="clr-namespace:DetegoRFID.Views"
+        mc:Ignorable="d"
+        Title="ExceptionWindow" Height="450" Width="800">
+    <Window.Resources>
+        <Style TargetType="TextBlock">
+            <Setter Property="Margin" Value="5"/>
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="IsReadOnly" Value="True"/>
+            <Setter Property="VerticalScrollBarVisibility" Value="Auto"/>
+            <Setter Property="HorizontalScrollBarVisibility" Value="Auto"/>
+            <Setter Property="AcceptsReturn" Value="True"/>
+            <Setter Property="AcceptsTab" Value="True"/>
+            <Setter Property="TextWrapping" Value="Wrap"/>
+            <Setter Property="Margin" Value="5,2,5,5"/>
+            <Setter Property="BorderThickness" Value="1"/>
+        </Style>
+        <conv:FailMessageExceptionToVisibilityConverter x:Key="failMessageExceptionToVisibilityConverter"/>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0">
+            <Run Text="Источник: "/>
+            <Run Text="{Binding Source,  Mode=OneWay}"/>
+        </TextBlock>
+        <TextBlock Grid.Row="1" Text="Сообщение:" Margin="5,5,5,0" />
+        <TextBox Grid.Row="2" Text="{Binding Message, Mode=OneWay}" MaxHeight="140"/>
+        <TextBlock Grid.Row="3" Text="Трассировка стека:" Margin="5,5,5,0"/>
+        <TextBox Grid.Row="4" Text="{Binding StackTrace, Mode=OneWay}"/>
+        <Button Margin="5" Content="OK" HorizontalAlignment="Right" Width="50" Grid.Row="5" Click="BT_OK"/>
+        <Button Margin="5" Content="Вложенное исключение " HorizontalAlignment="Left" Width="155" Grid.Row="5" Click="BT_InnerException"
+                Visibility="{Binding InnerException, Converter={StaticResource failMessageExceptionToVisibilityConverter}}"/>
+
+
+
+    </Grid>
+</Window>

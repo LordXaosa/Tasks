@@ -1,0 +1,75 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>DetegoServer</name>
+    </assembly>
+    <members>
+        <member name="T:DetegoServer.Controllers.Auth.AuthController">
+            <summary>
+            Main auth controller
+            </summary>
+        </member>
+        <member name="M:DetegoServer.Controllers.Data.AnalyticsController.GetStatsByCountries(System.String)">
+            <summary>
+            Method for statistical data, aggregating sum about stock info and groupped by countries
+            </summary>
+            <param name="countryName">country filter if needed</param>
+            <returns></returns>
+        </member>
+        <member name="M:DetegoServer.Controllers.Data.AnalyticsController.GetStatsByStores">
+            <summary>
+            Method for store analitycs
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DetegoServer.Controllers.Data.AnalyticsController.GetStatsByCategories(System.Collections.Generic.List{System.Int32})">
+            <summary>
+            Method for statistical data, aggregating sum about stock info and groupped by categories
+            </summary>
+            <param name="categories">categories filter</param>
+            <returns></returns>
+        </member>
+        <member name="M:DetegoServer.Controllers.Data.DataController.GetStockData(System.Nullable{System.Int32},System.String,System.String,System.String,System.String,System.Collections.Generic.List{System.Int32})">
+            <summary>
+            Method for getting info about stores and their stock with filter by conditions
+            </summary>
+            <param name="storeId">filter stock id</param>
+            <param name="countryCode">filter country code</param>
+            <param name="storeName">filter stock name</param>
+            <param name="managerFirstName">filter manager first name</param>
+            <param name="managerLastName">filter manager last name</param>
+            <param name="categories">filter categories, could be multiple</param>
+            <returns></returns>
+        </member>
+        <member name="M:DetegoServer.Controllers.Data.DataController.GetStockData(System.Int32)">
+            <summary>
+            Get info about specific store and it's stock
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DetegoServer.Controllers.Data.DataController.EditStockInfo(System.Int32,DetegoServer.Entities.BaseStoreData)">
+            <summary>
+            Method to edit stock info of the store
+            </summary>
+            <param name="id">store id</param>
+            <param name="storeData">stock info of the store</param>
+            <returns>if true - edit was successfull</returns>
+        </member>
+        <member name="M:DetegoServer.Controllers.Data.DataController.AddStore(DetegoServer.Entities.BaseStore)">
+            <summary>
+            Method to put new store data
+            </summary>
+            <param name="storeInfo">store data</param>
+            <returns>store data with new id</returns>
+        </member>
+        <member name="M:DetegoServer.Controllers.Data.DataController.EditStoreInfo(System.Int32,DetegoServer.Entities.BaseStore)">
+            <summary>
+            Method for editing store info
+            </summary>
+            <param name="id">id of the store</param>
+            <param name="storeInfo">new data to update</param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
